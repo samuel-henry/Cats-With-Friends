@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-
+  require ‘flickraw’
 
   before_filter :authorize_user_modify_phrase, :only => [:edit, :destroy]
   before_filter :authorize_user_create_phrase, :only => [:create]
