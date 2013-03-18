@@ -1,0 +1,15 @@
+<table cellspacing="10">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, user %></td>
+    <td><%= user.email %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
