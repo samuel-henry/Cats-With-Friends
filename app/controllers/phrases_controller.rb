@@ -1,4 +1,24 @@
 class PhrasesController < ApplicationController
+
+
+  before_filter :authorize_user_modify_phrase, :only => [:edit, :destroy]
+  before_filter :authorize_user_create_phrase, :only => [:create]
+
+  def authorize_user_modify_phrase
+    @user = User.find(Phrase.find(params[:id]).user_id)
+    #@user = User.find(params[:id])
+    if @user.id != session[:user_id]
+      redirect_to root_url, notice: "Nice Try"
+    end
+  end
+
+  def authorize_user_create_phrase
+    @user = User.find(params[:phrase][:user_id])
+    if @user.id != session[:user_id]
+      redirect_to root_url, notice: "Nice Try"
+    end
+  end
+
   # GET /phrases
   # GET /phrases.json
   def index
@@ -41,6 +61,7 @@ class PhrasesController < ApplicationController
   # POST /phrases.json
   def create
     @phrase = Phrase.new(params[:phrase])
+    #@phrase = Phrase.new(params)
 
     respond_to do |format|
       if @phrase.save

@@ -1,4 +1,5 @@
 <%= form_for(@phrase) do |f| %>
+
   <% if @phrase.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@phrase.errors.count, "error") %> prohibited this phrase from being saved:</h2>
@@ -15,10 +16,8 @@
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+
+  <div><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
   <div class="actions">
     <%= f.submit %>
   </div>
