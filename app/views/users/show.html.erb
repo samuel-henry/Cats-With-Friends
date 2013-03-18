@@ -7,12 +7,11 @@
 	</section>
 </aside>
 <div class="span8">
-	<%= render 'follow_form' if session[:user_id] %>
+	<!--<%= render 'follow_form' if session[:user_id] %>-->
 </div>
 
+<%= render 'fridge' %>
 
-<h2>Fridge:</h2>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<!--<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>-->

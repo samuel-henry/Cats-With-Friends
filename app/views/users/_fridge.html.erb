@@ -1,0 +1,9 @@
+<div id="fridge">
+	<strong>Fridge:</strong>
+	<% puts "entering fridge" %>
+	<% @user.phrases.each do |phrase| %>
+  		<div class="phraseSpace">
+  			<%= phrase.content %>
+		</div>
+	<% end %>
+</div>
