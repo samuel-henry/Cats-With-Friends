@@ -19,6 +19,17 @@ form {
 img {
 	width: 300px;
 }
+
+.rembeddit img, small {
+	display: none;
+}
+
+.reddit-link {
+	margin-top: 5px;
+	border-top: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 #images {
 	margin: 30px;
 }
@@ -26,15 +37,15 @@ img {
 .post {
 	border: 3px solid #c8c8c8;
 	margin:15px; 
-	padding: 35px;
-	max-width: 70%;
+	padding: 15px;
+	max-width: 50%;
 }
 
 .post:hover {
 	border: 3px solid #c8c8c8;
 	margin:15px; 
-	padding: 35px;
-	max-width: 70%;
+	padding: 15px;
+	max-width: 50%;
 	background-color: #272B4A;
 }
 

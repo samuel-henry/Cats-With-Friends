@@ -3,7 +3,7 @@
 		<a onclick="toggleNotMine()">Toggle Hide Posts By Others</a>
 	</div>
 <% end %>
-<div style="float:left;">
+<div style="float:left; margin-right: -100px;">
 	<h2>Top Rated</h2>
 	<% Post.order("upvotes DESC").limit(50).each do |post| %>
 	  	<% user = User.find(post.user_id) %>
