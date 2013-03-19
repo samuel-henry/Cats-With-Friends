@@ -56,7 +56,11 @@
       </div>
     </div>
   </div>
-
+<% if session[:user_id] %>
+  <div>
+    <%= link_to 'New Post', new_user_post_path(User.find(session[:user_id])), class: "btn btn-large btn-primary"%>
+  </div>
+<% end %>
 <%= yield %>
 
 </body>

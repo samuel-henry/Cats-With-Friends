@@ -4,6 +4,12 @@ FridgeWithFriends::Application.routes.draw do
     resources :posts
   end
 
+  resources :posts do
+     member do
+       get 'upvote'
+     end
+   end
+
   resources :users do
     member do
       get :following, :followers

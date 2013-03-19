@@ -1,7 +1,4 @@
 <p id="notice"><%= notice %></p>
-<% if User.find_by_id(session[:user_id]) === @user %>
-	<%= link_to 'New Post', new_user_post_path(@user) %>
-<% end %>
 
 <h2><%= @user.name %></h2>
 <div>
@@ -14,13 +11,8 @@
 </div>
 
 <% @user.posts.last(25).reverse.each do |post| %>
-  <div style="border: 3px solid blue; max-width: 20%; margin:15px;">
+  <div class="post">
     <p><%= image_tag(post.url) %></p>
     <p style="font-weight: bold;"><%= post.content %></p>
   </div>
 <% end %>
-
-
-
-<!--<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>-->

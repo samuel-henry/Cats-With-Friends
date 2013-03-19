@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
+<p>	
+	<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
+	<span><%= @post.upvotes %><%= link_to '↑', upvote_post_path(@post), :class => "upvote" %>
+</p>
 <p>
-  
-  <%= image_tag(@post.url) %>
+  	<%= image_tag(@post.url) %>
 </p>
 <p>
   <%= @post.content %>
