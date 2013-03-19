@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
   
+
+  before_filter :validate_exists, :except => [:index, :new, :create]
   before_filter :authorize_user, :only => [:edit, :update, :destroy]
 
+  #make sure user exists
+  def validate_exists
+    if User.exists?(params[:id])
+
+    else
+      redirect_to root_url, notice: "User does not exist"
+    end
+  end
+
+  #make sure user is authorized to perform action
   def authorize_user
     @user = User.find(params[:id])
     if @user.id != session[:user_id]

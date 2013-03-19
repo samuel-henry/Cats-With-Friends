@@ -13,7 +13,9 @@
 		<h3><%= @title %></h3>
 		<% if @users.any? %>
 			<ul class="users">
-				<%= render @users %>
+				<% @users.each do |relation| %>
+					<%= link_to relation.name, relation %>
+				<% end %>
 			</ul>
 		<% end %>
 	</div>

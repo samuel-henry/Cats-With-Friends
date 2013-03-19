@@ -25,8 +25,12 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+#quiet webrick warnings in dev
+#group :development do
+#  gem 'webrick', '~> 1.3.1'
+#end
+
 #flickr gem
-gem 'flickraw'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

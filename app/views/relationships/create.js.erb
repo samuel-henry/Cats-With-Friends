@@ -1,0 +1,5 @@
+//update button to unfollow
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>")
+
+//update follower count
+$("#followers").html('<%= @user.followers.count %>')

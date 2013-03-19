@@ -2,17 +2,17 @@
 
 <table>
   <tr>
-    <th>Content</th>
     <th>User</th>
+    <th>Content</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @phrases.each do |phrase| %>
+<% @phrases.last(25).reverse.each do |phrase| %>
   <tr>
-    <td><%= phrase.content %></td>
     <td><%= phrase.user_id %></td>
+    <td><%= phrase.content %></td>
     <td><%= link_to 'Show', phrase %></td>
     <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
     <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
