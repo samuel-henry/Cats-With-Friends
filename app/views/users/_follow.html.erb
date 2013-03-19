@@ -1,5 +1,3 @@
-<% puts "entered follow form" %>
-<% puts User.find_by_id(session[:user_id]).name %>
 <%= form_for(User.find_by_id(session[:user_id]).relationships.build(followed_id: @user.id)) do |f| %>
 	
 	<div><%= f.hidden_field :followed_id %></div>

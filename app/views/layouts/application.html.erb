@@ -46,23 +46,23 @@
 
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container" style="margin-left:15px;">
         <!--<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>-->
-        <a class="brand span2" href="/">Cats With Friends</a>
+        <a class="brand" href="/">Cats With Friends</a>
         <div class="nav-collapse">
           <!--<form class="navbar-search pull-left" action="/flights" method="get">
             <input type="text" class="search-query span3" placeholder="Search by city or airport code" name="search">
           </form>-->
-          <ul class="nav pull-right">
+          <ul class="nav">
             <!--<li><a href="/airports.html">Cities</a></li>
             <li><a href="/support.html">Customer Support</a></li>-->
 
             <% if session[:user_id] %>
-              <li><%= link_to "My Profile", user_url(session[:user_id]) %></li>
+              <li><%= link_to User.find(session[:user_id]).name, user_url(session[:user_id]) %></li>
               <li><%= link_to "Sign Out", sign_out_url %></li>
             <% else %>
               <li><%= link_to "Sign Up", new_user_url %></li>
@@ -78,7 +78,16 @@
     <%= link_to 'New Post', new_user_post_path(User.find(session[:user_id])), class: "btn btn-large btn-primary"%>
   </div>
 <% end %>
-<%= yield %>
+
+<div style="float:left;">
+  <%= yield %>
+</div>
+
+<div style="float:right;">
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=cats%2C+cat%2C+kittens%2C+kitties" data-widget-id="314139884954730496">Tweets about "cats, cat, kittens, kitties"</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
 
 </body>
 </html>
