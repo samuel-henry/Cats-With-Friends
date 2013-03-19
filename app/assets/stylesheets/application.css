@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+#images {
+	margin: 30px;
+}
+
+form {
+	margin-left: 30px;
+}
+
+.post {
+	border: 3px solid #c8c8c8;; 
+	max-width: 20%; 
+	margin:15px; 
+	padding: 35px;
+}

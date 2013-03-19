@@ -1,7 +1,7 @@
 FridgeWithFriends::Application.routes.draw do
-  resources :phrases
+  resources :posts
   resources :users do
-    resources :phrases
+    resources :posts
   end
 
   resources :users do
@@ -20,5 +20,5 @@ FridgeWithFriends::Application.routes.draw do
   post "sessions/create"
   get "sessions/destroy" => 'sessions#destroy', :as => :sign_out
 
-  root :to => 'users#index'
+  root :to => 'posts#index'
 end

@@ -14,7 +14,9 @@
 		<% if @users.any? %>
 			<ul class="users">
 				<% @users.each do |relation| %>
-					<%= link_to relation.name, relation %>
+					<li>
+						<%= link_to relation.name, relation %>
+					</li>
 				<% end %>
 			</ul>
 		<% end %>

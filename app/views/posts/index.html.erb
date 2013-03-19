@@ -1,0 +1,8 @@
+<% @posts.last(25).reverse.each do |post| %>
+  <% user = User.find(post.user_id) %>
+  <div class="post">
+    <p style="font-weight: bold;"><%= link_to user.name, user %></p>
+    <p><%= image_tag(post.url) %></p>
+    <p style="font-weight: bold;"><%= post.content %></p>
+  </div>
+<% end %>
