@@ -6,4 +6,24 @@ class Relationship < ActiveRecord::Base
 
   validates :follower_id, presence: true
   validates :followed_id, presence: true
+
+  #following a user upvotes all their posts!
+  after_save :upvote_new_friend
+
+  before_destroy :downvote_old_friend
+
+  private
+  	def upvote_new_friend
+  		followed.posts.each do |post|
+  			post.upvotes +=1
+  			post.save
+  		end
+  	end
+
+  	def downvote_old_friend
+  		followed.posts.each do |post|
+  			post.upvotes -=1
+  			post.save
+  		end
+  	end
 end

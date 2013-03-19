@@ -16,6 +16,23 @@
     .table thead th { font-size: 20px; background: #5484a7; color: white; text-align: center; height: 30px; padding: 12px; vertical-align: middle}
     .table td { text-align: center; }
   </style>
+  <script>
+    //Hide other users' posts. It's all about me!
+    var toggleNotMine = function() {
+      var otherUserPosts = document.getElementsByClassName("postNotMine");
+
+      var i;
+
+      for (i=0; i<otherUserPosts.length; i++) {
+        if (otherUserPosts[i].style.visibility == "hidden") {
+          otherUserPosts[i].style.visibility = "visible";
+        } else {
+          otherUserPosts[i].style.visibility = "hidden";
+        }
+        
+      }
+    }
+</script>
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>

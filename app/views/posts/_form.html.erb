@@ -15,7 +15,7 @@
   <div class="field">
     <%= f.text_field :content %>
   </div>
-  <div><%= f.hidden_field :url, :value => "" %></div>
+  <div><%= f.hidden_field :url, :value => @post.url %></div>
   <div><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
   <div class="actions">
     <%= f.submit %>

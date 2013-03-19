@@ -98,6 +98,7 @@ class PostsController < ApplicationController
   end
 
   #upvote implementation influenced by http://stackoverflow.com/q/7085509/1443027
+  #Note: user need not be signed in to upvote!!! No content walls on Cats With Friends!!
   def upvote
     @post = Post.find (params[:id])
     @post.upvotes += 1

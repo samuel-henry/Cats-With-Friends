@@ -1,7 +1,6 @@
 <h1>Editing post</h1>
 
-
+<p>
+  	<%= image_tag(@post.url) %>
+</p>
 <%= render 'form' %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>

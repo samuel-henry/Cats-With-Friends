@@ -12,6 +12,7 @@
 
 <% @user.posts.last(25).reverse.each do |post| %>
   <div class="post">
+  	<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>
     <p><%= image_tag(post.url) %></p>
     <p style="font-weight: bold;"><%= post.content %></p>
   </div>

@@ -27,10 +27,15 @@ img {
 	border: 3px solid #c8c8c8;
 	margin:15px; 
 	padding: 35px;
+	max-width: 70%;
 }
 
 .upvote {
 	font-size: 20px;
 	font-weight: bold;
 	margin-left: 5px;
+}
+
+.toggle {
+	margin-top: 15px;
 }

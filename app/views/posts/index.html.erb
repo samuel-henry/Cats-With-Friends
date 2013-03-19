@@ -1,15 +1,33 @@
+<% if session[:user_id] %>
+	<div class="toggle">
+		<a onclick="toggleNotMine()">Toggle Posts By Others</a>
+	</div>
+<% end %>
 <div style="float:left;">
 	<h2>Top Rated</h2>
 	<% Post.order("upvotes DESC").limit(50).each do |post| %>
-	  <% user = User.find(post.user_id) %>
-	  <div class="post">
-
+	  	<% user = User.find(post.user_id) %>
+	  	<% if session[:user_id] == post.user_id %>
+  	  		<div class="post">
+	  	<% else %>
+	  		<div class="post postNotMine">
+	  	<% end %>
+	  	
 	  	<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
 	  	<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>
 
 	    <p style="font-weight: bold;"><%= link_to user.name, user %></p>
 	    <p><%= image_tag(post.url) %></p>
 	    <p style="font-weight: bold;"><%= post.content %></p>
+
+	    <p>	
+	    	<% if session[:user_id] == post.user_id %>
+	    		<% puts "entering edit block" %>
+				<%= link_to 'Edit', edit_post_path(post) %>
+				<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
+			<% end %>
+		</p>
+
 	  </div>
 	<% end %>
 </div>
@@ -17,7 +35,12 @@
 	<h2>Most Recent</h2>
 	<% Post.last(50).reverse.each do |post| %>
   	<% user = User.find(post.user_id) %>
-  	<div class="post">
+
+  	<% if session[:user_id] == post.user_id %>
+  		<div class="post">
+  	<% else %>
+  		<div class="post postNotMine">
+  	<% end %>
 
 		<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
 		<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>
@@ -25,6 +48,14 @@
 		<p style="font-weight: bold;"><%= link_to user.name, user %></p>
 		<p><%= image_tag(post.url) %></p>
 		<p style="font-weight: bold;"><%= post.content %></p>
+
+		<p>	
+	    	<% if session[:user_id] == post.user_id %>
+	    		<% puts "entering edit block" %>
+				<%= link_to 'Edit', edit_post_path(post) %>
+				<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
+			<% end %>
+		</p>
 	</div>
 <% end %>
 </div>
