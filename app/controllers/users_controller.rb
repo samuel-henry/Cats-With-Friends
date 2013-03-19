@@ -66,6 +66,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        # Tell the UserMailer to send a welcome Email after save
+        UserMailer.welcome_email(@user).deliver
+        
         #sign the user in after they create an account
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'Your account was successfully created.' }
