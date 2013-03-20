@@ -6,16 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# create some users
 User.delete_all
-
 john = User.create(name: 'John', email: 'lennon@beatles.com', password: 'test')
-
 george = User.create(name: 'George', email: 'harrison@beatles.com', password: 'test')
-
 ringo = User.create(name: 'Ringo', email: 'starr@beatles.com', password: 'test')
-
 paul = User.create(name: 'Paul', email: 'mccartney@beatles.com', password: 'test')
 
+# create some relationships -- nobody wants to follow Paul :(
 Relationship.delete_all
 john.relationships.build(followed_id: george.id)
 john.relationships.build(followed_id: ringo.id)
@@ -24,6 +22,7 @@ paul.relationships.build(followed_id: george.id)
 paul.relationships.build(followed_id: john.id)
 paul.relationships.build(followed_id: ringo.id)
 
+# create some posts
 Post.delete_all
 post1 = Post.create(content: 'This is a cool cat', user_id:john.id, url:"http://farm9.staticflickr.com/8237/8573722646_befeb68bb8_m.jpg")
 post2 = Post.create(content: 'Wow, a cat!', user_id:paul.id, url:"http://farm9.staticflickr.com/8233/8572620513_19719557c3_m.jpg")
@@ -36,6 +35,7 @@ post8 = Post.create(content: 'Sad :(', user_id:paul.id, url:"http://farm9.static
 post9 = Post.create(content: 'Friends :)', user_id:paul.id, url:"http://farm9.staticflickr.com/8244/8573677302_7bac2435d8_m.jpg")
 post10 = Post.create(content: 'Purrrrrfect', user_id:john.id, url:"http://farm9.staticflickr.com/8368/8572581841_10b6672f01_m.jpg")
 
+# give the posts some upvotes
 post1.upvotes = 2
 post2.upvotes = 5
 post3.upvotes = 10
@@ -47,6 +47,7 @@ post8.upvotes = 22
 post9.upvotes = 18
 post10.upvotes = 0
 
+# save with the upvotes
 post1.save
 post2.save
 post3.save

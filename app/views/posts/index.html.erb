@@ -1,12 +1,19 @@
+<%# if user is signed in, show the toggle other users' posts off switch %>
 <% if session[:user_id] %>
 	<div class="toggle">
 		<a onclick="toggleNotMine()">Toggle Hide Posts By Others</a>
 	</div>
 <% end %>
+
+<%# show top rated posts of all time %>
 <div style="float:left; margin-right: -100px;">
 	<h2>Top Rated</h2>
+
+	<%# get the top 50 upvoted posts %>
 	<% Post.order("upvotes DESC").limit(50).each do |post| %>
 	  	<% user = User.find(post.user_id) %>
+
+	  	<%# if this post was by the signed in user, don't add the "not mine" class for the toggler %>
 	  	<% if session[:user_id] == post.user_id %>
   	  		<div class="post">
 	  	<% else %>
@@ -16,13 +23,18 @@
 	  	<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
 	  	<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>
 
+	  	<%# show post user %>
 	    <p style="font-weight: bold;"><%= link_to user.name, user %></p>
+
+	    <%# show post cat image %>
 	    <p><%= image_tag(post.url) %></p>
+
+	    <%# show post caption %>
 	    <p style="font-weight: bold;"><%= post.content %></p>
 
+	    <%# let signed in user modify their own posts %>
 	    <p>	
 	    	<% if session[:user_id] == post.user_id %>
-	    		<% puts "entering edit block" %>
 				<%= link_to 'Edit', edit_post_path(post) %>
 				<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
 			<% end %>
@@ -31,27 +43,37 @@
 	  </div>
 	<% end %>
 </div>
+
+<%# most recent posts !DRY %>
 <div style="float:left;">
 	<h2>Most Recent</h2>
+
+	<%# get last 50 posts %>
 	<% Post.last(50).reverse.each do |post| %>
-  	<% user = User.find(post.user_id) %>
+  		<% user = User.find(post.user_id) %>
 
-  	<% if session[:user_id] == post.user_id %>
-  		<div class="post">
-  	<% else %>
-  		<div class="post postNotMine">
-  	<% end %>
+  		<%# add "not mine" tag for toggler if post not by signed in user %>
+  		<% if session[:user_id] == post.user_id %>
+  			<div class="post">
+  		<% else %>
+  			<div class="post postNotMine">
+  		<% end %>
 
-		<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
+		<%# upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027 %>
 		<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>
 
+		<%# show user name %>
 		<p style="font-weight: bold;"><%= link_to user.name, user %></p>
+
+		<%# show cat pic from Flickr %>
 		<p><%= image_tag(post.url) %></p>
+
+		<%# show caption %>
 		<p style="font-weight: bold;"><%= post.content %></p>
 
+		<%# let signed in user modify their posts %>
 		<p>	
 	    	<% if session[:user_id] == post.user_id %>
-	    		<% puts "entering edit block" %>
 				<%= link_to 'Edit', edit_post_path(post) %>
 				<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
 			<% end %>

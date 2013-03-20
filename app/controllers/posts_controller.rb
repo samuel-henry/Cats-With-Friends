@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
 
+  #before filters on Posts. only authorized user can edit, destroy, and create posts
   before_filter :authorize_user_modify_post, :only => [:edit, :destroy]
   before_filter :authorize_user_create_post, :only => [:create]
 
+  #only let user modify their own posts
   def authorize_user_modify_post
     @user = User.find(Post.find(params[:id]).user_id)
     if @user.id != session[:user_id]
@@ -10,6 +12,7 @@ class PostsController < ApplicationController
     end
   end
 
+  #only let user create their own posts (ie prevent user 3 from posting from /users/5/posts/new)
   def authorize_user_create_post
     @user = User.find(params[:post][:user_id])
     if @user.id != session[:user_id]

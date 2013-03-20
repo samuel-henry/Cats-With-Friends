@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   
-
+  #make sure specified user exists before calling user-specific actions
   before_filter :validate_exists, :except => [:index, :new, :create]
+
+  #make sure user is authorized to modify this user
   before_filter :authorize_user, :only => [:edit, :update, :destroy]
 
   #make sure user exists
   def validate_exists
     if User.exists?(params[:id])
-
+      #no problem, continue
     else
       redirect_to root_url, notice: "User does not exist"
     end
@@ -16,6 +18,8 @@ class UsersController < ApplicationController
   #make sure user is authorized to perform action
   def authorize_user
     @user = User.find(params[:id])
+
+    #make sure specific user and session user are the same
     if @user.id != session[:user_id]
       redirect_to root_url, notice: "Nice Try"
     end

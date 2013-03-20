@@ -1,9 +1,9 @@
+<%# form container for following / unfollowing users -- thanks Hartl! %>
 <% unless session[:user_id] == @user.id %>
 	<form id="follow_form"?
 		<% if User.find_by_id(session[:user_id]).following?(@user) %>
 			<%= render 'unfollow' %>
 		<% else %>
-			<% puts "entering follow form" %>
 			<%= render 'follow' %>
 		<% end %>
 	</form>

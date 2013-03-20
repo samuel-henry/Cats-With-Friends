@@ -3,13 +3,18 @@
 	<!-- upvote implementation inspired by http://stackoverflow.com/q/7085509/1443027-->
 	<span><%= @post.upvotes %><%= link_to '↑', upvote_post_path(@post), :class => "upvote" %>
 </p>
+
+<%# show the Flickr cat pic associated with this post %>
 <p>
   	<%= image_tag(@post.url) %>
 </p>
+
+<%# show the caption associated with this post %>
 <p>
   <%= @post.content %>
 </p>
 
+<%# let signed in user modify/destroy their posts %>
 <% if session[:user_id] === @post.user_id %>
 	<%= link_to 'Edit', edit_post_path(@post) %>
 	<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>

@@ -2,14 +2,18 @@
 
 <h2><%= @user.name %></h2>
 <div>
+	<%# show users' following / followed by stats %>
 	<section>
 		<%= render 'shared/stats' %>
 	</section>
 </div>
+
+<%# render form to follow / unfollow user %>
 <div>
 	<%= render 'follow_form' if session[:user_id] %>
 </div>
 
+<%# show usrs' most recent posts %>
 <% @user.posts.last(25).reverse.each do |post| %>
   <div class="post">
   	<p><span><%= post.upvotes %><%= link_to '↑', upvote_post_path(post), class: "upvote" %></p>

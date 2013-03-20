@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 
-#for production db on aws
+#for production db on Amazon Web Services - Relational Database Service
 gem 'mysql2'
 
 # Gems used only for assets and not required
@@ -26,11 +26,6 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
-
-#quiet webrick warnings in dev
-#group :development do
-#  gem 'webrick', '~> 1.3.1'
-#end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

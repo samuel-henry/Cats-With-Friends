@@ -33,6 +33,7 @@ module FridgeWithFriends
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # configuration for mailer
     config.action_mailer.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
         :address              => "smtp.gmail.com",

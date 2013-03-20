@@ -1,5 +1,6 @@
+<%# follow submission for within follow form -- thanks Hartl! %>
 <%= form_for(User.find_by_id(session[:user_id]).relationships.build(followed_id: @user.id)) do |f| %>
-	
+	<%# hidden field for user to follow %>
 	<div><%= f.hidden_field :followed_id %></div>
 	<%= f.submit "Follow", class: "btn btn-large btn-primary" %>
 <% end %>

@@ -12,10 +12,15 @@
     </div>
   <% end %>
 
+  <%# field for user to enter a caption on the Flickr cat photo %>
   <div class="field">
     <%= f.text_field :content %>
   </div>
+
+  <%# hidden field for url to the cat that was retrieved via AJAX from flickr for this post %>
   <div><%= f.hidden_field :url, :value => @post.url %></div>
+
+  <%# hidden field for user id %>
   <div><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
   <div class="actions">
     <%= f.submit %>

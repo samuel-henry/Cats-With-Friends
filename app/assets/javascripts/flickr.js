@@ -1,4 +1,6 @@
-
+//Use AJAX to get latest public cat pictures from fickr.
+//Pick a random cat pic from the results and put it in the #image element
+//Update the form's hidden URL field so the url for the cat pic will be submitted with the caption
 $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat,cats,kitten,kittie,kitty&tagmode=any&format=json&jsoncallback=?",
         function(data){
           //make sure the #images div is on the page and that it doesn't have anything in it yet

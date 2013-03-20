@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <!--Google Analytics-->
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -18,7 +20,9 @@
     })();
 
   </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%# my bootstrap theme %>
     <link rel="stylesheet" type="text/css" href="http://bootswatch.com/slate/bootstrap.min.css">
   <style type="text/css">
     body { padding-top: 60px; padding-bottom: 40px; }
@@ -32,10 +36,13 @@
   <script>
     //Hide other users' posts. It's all about me!
     var toggleNotMine = function() {
+      //get other users' posts
       var otherUserPosts = document.getElementsByClassName("postNotMine");
 
-      var i;
+      //create iteration variable outside loop for slight performance boost
+      var i;  
 
+      //toggle visibility on other users' posts
       for (i=0; i<otherUserPosts.length; i++) {
         if (otherUserPosts[i].style.visibility == "hidden") {
           otherUserPosts[i].style.visibility = "visible";
@@ -57,18 +64,25 @@
 </head>
 <body>
 
+<%# borrowed mainly from flights app %>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container" style="margin-left:15px;">
         <a class="brand" href="/">Cats With Friends</a>
         <div class="nav-collapse">
           <ul class="nav">
-
+            <%# see if there is a signed in user %>
             <% if session[:user_id] %>
+              <%# link to signed in user's profile %>
               <li><%= link_to User.find(session[:user_id]).name, user_url(session[:user_id]) %></li>
+
+              <%# link for signed in user to sign out %>
               <li><%= link_to "Sign Out", sign_out_url %></li>
             <% else %>
+              <%# link for signing up %>
               <li><%= link_to "Sign Up", new_user_url %></li>
+
+              <%# link for signing out %>
               <li><%= link_to "Sign In", sign_in_url %></li>
             <% end %>
           </ul>
@@ -76,24 +90,30 @@
       </div>
     </div>
   </div>
+
+<%# if there's a signed in user, let them create a new post from just about anywhere %>  
 <% if session[:user_id] %>
   <div>
     <%= link_to 'New Post', new_user_post_path(User.find(session[:user_id])), class: "btn btn-large btn-primary"%>
   </div>
 <% end %>
 
+<%# container for post content %>
 <div style="float:left;">
   <%= yield %>
 </div>
 
+<%# social feeds %>
+<%# Twitter %>
 <div style="float:right;">
     <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=cats%2C+cat%2C+kittens%2C+kitties" data-widget-id="314139884954730496">Tweets about "cats, cat, kittens, kitties"</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-<div style="float:right; max-width: 10%; margin-right:15px; overflow:hidden;">
- <script src="http://www.reddit.com/r/aww/new/.embed?limit=10&t=week&sort=new&style=off" type="text/javascript"></script>
-</div>
 
+<%# Reddit %>
+<div style="float:right; max-width: 10%; margin-right:15px; overflow:hidden;">
+  <script src="http://www.reddit.com/r/aww/new/.embed?limit=10&t=week&sort=new&style=off" type="text/javascript"></script>
+</div>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 <h1>Editing post</h1>
-
+<%# show the cat pic that was associated with this post when it was created %>
 <p>
   	<%= image_tag(@post.url) %>
 </p>
+
 <%= render 'form' %>

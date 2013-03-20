@@ -20,16 +20,6 @@ img {
 	width: 300px;
 }
 
-.rembeddit img, small {
-	display: none;
-}
-
-.reddit-link {
-	margin-top: 5px;
-	border-top: 1px solid red;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
 #images {
 	margin: 30px;
 }
@@ -56,6 +46,19 @@ img {
 	margin-left: 5px;
 }
 
+/*the "only show my posts" toggle switch on posts/index (home page)*/
 .toggle {
 	margin-top: 15px;
+}
+
+/*my custom styling for reddit content and links*/
+.rembeddit img, small {
+	display: none;
+}
+
+.reddit-link {
+	margin-top: 5px;
+	border-top: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }

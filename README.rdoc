@@ -1,3 +1,3 @@
 == Cats With Friends
 
-Social cat photo captioning and voting site
+Social cat photo captioning and voting site. Gets a recent public cat photo from Flickr, lets you add a caption, then upvotes determine which cat posts survive the recent feed and stay on the home screen!
