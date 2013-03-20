@@ -7,6 +7,8 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 
+#for production db on aws
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,8 +31,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #group :development do
 #  gem 'webrick', '~> 1.3.1'
 #end
-
-#flickr gem
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
