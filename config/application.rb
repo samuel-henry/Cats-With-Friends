@@ -37,8 +37,8 @@ module FridgeWithFriends
     ActionMailer::Base.smtp_settings = {
         :address              => "smtp.gmail.com",
         :port                 => 587,
-        :user_name            => "catswithfriends2013@gmail.com.",
-        :password             => 'samplepassword',
+        :user_name            => "catswithfriends0@gmail.com",
+        :password             => 'passwordexample',
         :authentication       => "plain",
         :enable_starttls_auto => true
     }
