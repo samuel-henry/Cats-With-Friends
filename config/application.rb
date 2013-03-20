@@ -34,14 +34,14 @@ module FridgeWithFriends
     # config.i18n.default_locale = :de
 
     config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'baci.lindsaar.net',
-    :user_name            => 'catswithfriends2013@gmail.com.',
-    :password             => 'samplepassword',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+    ActionMailer::Base.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :user_name            => "catswithfriends2013@gmail.com.",
+        :password             => 'samplepassword',
+        :authentication       => "plain",
+        :enable_starttls_auto => true
+    }
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
